@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        
     }
+
 
     // Update is called once per frame
     void Update()
@@ -28,7 +30,9 @@ public class PlayerController : MonoBehaviour
         if (rb.IsTouching(GameObject.FindGameObjectWithTag("Finish").GetComponent<Collider2D>())) {
             // TODO Mandar he acabado al servidor.
             //Pararlo todos
+            //gameObject.transform.position;
             speed = 0;
+            anim.speed = 0;
             print("He terminado la carrera");
         } else
         {
@@ -37,6 +41,7 @@ public class PlayerController : MonoBehaviour
             computePlayerStats();
             anim.speed = speed / maxSpeed;
             rb.velocity = new Vector2(speed, 0.0f);
+
         }
     }
 
