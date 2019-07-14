@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour {
             speed = 0;
             anim.speed = 0;
         } else {
+            connectionScript.PlayerPosition(speed);
             bool lash = Input.GetKeyDown("space");
             updateSpeed(lash);
             computePlayerStats();

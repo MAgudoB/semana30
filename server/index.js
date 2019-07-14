@@ -24,6 +24,9 @@ io.on('connection', function(socket){
 	socket.on('gameOver', function(data){
 		console.log("gameOver");
 	});
+	socket.on('userPosition', function(data){
+		socket.emit('rivalPosition',{ speed: data });
+	});
 });
 
 http.listen(3000, function(){
