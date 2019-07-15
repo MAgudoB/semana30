@@ -22,23 +22,22 @@ io.on('connection', function(socket){
             });
 	socket.on('login', function(data){
 		console.log(data+' logged');
+        var insertUser = "INSERT INTO users (\'user_name\') VALUES (\'" + data + "\')";
+console.log(insertUser)
 		if(data==""){
 			socket.emit('noUsername');
 		}
 		else{
 			socket.emit('logged');
 		}
-        var sql = `CREATE TABLE IF NOT EXISTS games (
-                     user_name TEXT PRIMARY KEY,
-                     number_of_game INTEGER
-                    );`
+        var sql = `CREATE TABLE IF NOT EXISTS users (
+                     user_name TEXT PRIMARY KEY);`
         db.run(sql, (err) => {
                         if (err) {
                             console.log(err.message)
-                        } else {
-                            console.log("Table games created")
                         }
                     })
+        db.run(insertUser, (err) => {if (err) {console.log(err.message)}})
 	});
 	socket.on('gameOver', function(data){
 		console.log("gameOver");
