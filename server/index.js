@@ -23,7 +23,7 @@ io.on('connection', function(socket){
 	socket.on('login', function(data){
 		console.log(data+' logged');
         var insertUser = "INSERT INTO users (\'user_name\') VALUES (\'" + data + "\')";
-console.log(insertUser)
+		console.log(insertUser)
 		if(data==""){
 			socket.emit('noUsername');
 		}
